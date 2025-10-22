@@ -1,8 +1,39 @@
+# 🧩 Project Setup & Pre-commit Guide
+
+### 1️⃣ Initial Setup (Run only once after cloning)
+
+Run:
+
+```bash
+make setup
+```
+
+This command will:
+
+- Install necessary Python libraries (requirements.txt)
+- Install and activate pre-commit hooks (including commit convention enforcement)
+
+### 2️⃣ Before committing any changes
+
+Run:
+
+```bash
+make check_precommit
+```
+
+This command will:
+
+- Check all code formatting (Black, isort)
+- Check for linting errors (flake8)
+
+⚠️ **If any files were modified (by Black/format), you need to:**
+
+```bash
+git add .
+git commit -m "feat: your message..."
+```
+
 # Commit Message Convention
-
-[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-
-Commit message will be checked using [husky and commit lint](https://theodorusclarence.com/library/husky-commitlint-prettier), you can't commit if not using the proper convention below.
 
 ### Format
 
