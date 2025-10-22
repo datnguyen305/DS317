@@ -1,0 +1,11 @@
+# Virtual environment
+.vscode/
+.python-version
+
+# Environment variables
+.env
+
+# Others
+node_modules/
+__pycache__/
+*.pyc

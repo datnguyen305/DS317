@@ -1,0 +1,48 @@
+repos:
+    # 🧹 Basic sanity checks — các kiểm tra cơ bản đảm bảo file sạch sẽ, không lỗi ngớ ngẩn
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v6.0.0 # phiên bản cụ thể của bộ hook này
+      hooks:
+          - id: check-yaml # ✅ Kiểm tra cú pháp YAML có hợp lệ không
+          - id: end-of-file-fixer # ✅ Đảm bảo mỗi file kết thúc bằng 1 dòng trống (chuẩn POSIX)
+          - id: trailing-whitespace # ✅ Xóa khoảng trắng dư thừa ở cuối mỗi dòng
+          - id: check-merge-conflict # ✅ Phát hiện các marker của merge conflict (<<<<<<<, =======, >>>>>>>)
+          - id: check-added-large-files # ✅ Ngăn commit các file quá lớn (thường >5MB, tùy config)
+
+    # 🧱 Code formatter (Black) — Tự động format code Python theo chuẩn PEP8
+    - repo: https://github.com/psf/black
+      rev: 25.9.0 # Phiên bản của black để đảm bảo ổn định
+      hooks:
+          - id: black # ✅ Gọi Black để format toàn bộ file .py
+            language_version: python3 # ✅ Dùng Python 3 để chạy black
+
+    # ✅ Format YAML, JSON, Markdown, HTML, CSS, v.v.
+    # ✅ Dùng chung quy tắc indent 4 spaces để đồng nhất với Python
+    - repo: https://github.com/pre-commit/mirrors-prettier
+      rev: v4.0.0-alpha.8
+      hooks:
+          - id: prettier
+            files: '\.(yaml|yml|json|md)$'
+            args: ["--tab-width", "4", "--use-tabs", "false"]
+
+    # 🧾 Import sorter (isort) — Tự động sắp xếp các import theo quy tắc chuẩn
+    - repo: https://github.com/PyCQA/isort
+      rev: 7.0.0 # Phiên bản cụ thể của isort
+      hooks:
+          - id: isort # ✅ Sắp xếp import trong file Python theo nhóm (std, third-party, local)
+
+    # 🔍 Linter (flake8) — Kiểm tra code có lỗi style, logic hoặc vi phạm PEP8 không
+    - repo: https://github.com/pycqa/flake8
+      rev: 7.3.0 # Phiên bản của flake8
+      hooks:
+          - id: flake8 # ✅ Phát hiện lỗi lint, cảnh báo coding style
+            additional_dependencies: # ✅ Cài thêm plugin phụ cho flake8
+                - flake8-bugbear # 🔎 Phát hiện lỗi tiềm ẩn, code smell
+                - flake8-comprehensions # 🔎 Đề xuất cải thiện các list/set/dict comprehension cho hiệu quả hơn
+
+    # 📓 Notebook quality check (for ML / Data projects) — Kiểm tra chất lượng notebook Jupyter
+    - repo: https://github.com/nbQA-dev/nbQA
+      rev: 1.9.1 # Phiên bản nbQA
+      hooks:
+          - id: nbqa-black # ✅ Chạy Black trên .ipynb (Jupyter Notebook)
+          - id: nbqa-flake8 # ✅ Chạy Flake8 kiểm lỗi code trong notebook
