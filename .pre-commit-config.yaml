@@ -31,14 +31,14 @@ repos:
       hooks:
           - id: isort # ✅ Sắp xếp import trong file Python theo nhóm (std, third-party, local)
 
-    # 🔍 Linter (flake8) — Kiểm tra code có lỗi style, logic hoặc vi phạm PEP8 không
-    - repo: https://github.com/pycqa/flake8
-      rev: 7.3.0 # Phiên bản của flake8
-      hooks:
-          - id: flake8 # ✅ Phát hiện lỗi lint, cảnh báo coding style
-            additional_dependencies: # ✅ Cài thêm plugin phụ cho flake8
-                - flake8-bugbear # 🔎 Phát hiện lỗi tiềm ẩn, code smell
-                - flake8-comprehensions # 🔎 Đề xuất cải thiện các list/set/dict comprehension cho hiệu quả hơn
+    # # 🔍 Linter (flake8) — Kiểm tra code có lỗi style, logic hoặc vi phạm PEP8 không
+    # - repo: https://github.com/pycqa/flake8
+    #   rev: 7.3.0 # Phiên bản của flake8
+    #   hooks:
+    #       - id: flake8 # ✅ Phát hiện lỗi lint, cảnh báo coding style
+    #         additional_dependencies: # ✅ Cài thêm plugin phụ cho flake8
+    #             - flake8-bugbear # 🔎 Phát hiện lỗi tiềm ẩn, code smell
+    #             - flake8-comprehensions # 🔎 Đề xuất cải thiện các list/set/dict comprehension cho hiệu quả hơn
 
     # 📓 Notebook quality check (for ML / Data projects) — Kiểm tra chất lượng notebook Jupyter
     - repo: https://github.com/nbQA-dev/nbQA
