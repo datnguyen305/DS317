@@ -4,6 +4,7 @@
 
 # Environment variables
 .env
+venv
 
 # Others
 node_modules/
